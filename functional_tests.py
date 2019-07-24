@@ -21,7 +21,7 @@ class NewVisitorTest(unittest.TestCase):
         # lists
         self.assertIn('To-Do', self.browser.title)
         header_text = self.browser.find_element_by_tag_name('h1').text
-        self.assertIn('To-Do', header - text)
+        self.assertIn('To-Do', header_text)
 
         # user decides to add a to do item
         inputbox = self.browser.find_element_by_id('id_new_item')
@@ -41,7 +41,8 @@ class NewVisitorTest(unittest.TestCase):
         table = self.browser.find_element_by_id('id_list_table')
         rows = table.find_elements_by_tag_name('tr')
         self.assertTrue(
-            any(row.text == '1: Submit patient payments to finance dept' for row in rows)
+            any(row.text == '1: Submit patient payments to finance dept' for row in rows),
+            "New to-do item did not appear in table"
         )
 
         # user uses the text box to add another ites - "enter cashlog data via
