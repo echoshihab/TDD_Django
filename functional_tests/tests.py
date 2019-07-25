@@ -1,10 +1,10 @@
+from django.test import LiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
-import unittest
 
 
-class NewVisitorTest(unittest.TestCase):
+class NewVisitorTest(LiveServerTestCase):
 
     def setUp(self):
         self.browser = webdriver.Chrome(
@@ -20,7 +20,7 @@ class NewVisitorTest(unittest.TestCase):
 
     def test_start_list_retrieve_list(self):
         # user goes to homepage to add todo item
-        self.browser.get('http://localhost:8000')
+        self.browser.get(self.live_server_url)
 
         # user sees the title 'To-Do' as the page title and header mentiones to-do
         # lists
@@ -65,7 +65,3 @@ class NewVisitorTest(unittest.TestCase):
         # available
 
         # user quites the todo list for the day
-
-
-if __name__ == '__main__':
-    unittest.main(warnings='ignore')
