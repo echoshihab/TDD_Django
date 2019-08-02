@@ -63,9 +63,9 @@ class NewVisitorTest(LiveServerTestCase):
 
         # the page updates again, and now shows both item on the list
         self.wait_for_row_in_list_table(
-            '1: Submit patient payments to finance dept')
-        self.wait_for_row_in_list_table(
             '2: Enter cashbox data via cashlog form')
+        self.wait_for_row_in_list_table(
+            '1: Submit patient payments to finance dept')
 
         # user wants the site to remember the list, and notes that the site has
         # generated a unique url
@@ -76,7 +76,7 @@ class NewVisitorTest(LiveServerTestCase):
         # user quites the todo list for the day
     def test_multiple_users_can_start_lists_at_different_urls(self):
 
-        #user1 starts a new to-do list
+        # user1 starts a new to-do list
         self.browser.get(self.live_server_url)
         inputbox = self.browser.find_element_by_id('id_new_item')
         inputbox.send_keys('Submit patient payments to finance dept')
